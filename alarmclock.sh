@@ -1,14 +1,13 @@
 #!/bin/bash
 awake_time=$1
 sleep_time=$2
-
-# TODO: Rename script
+pictures_root="/home/pi/Pictures"
 
 function show {
   folder=$1
   delay_in_seconds=$2
   delay_in_minutes=$(($delay_in_seconds * 60))
-  command="$XPREFIX /usr/bin/feh --quiet --preload --fullscreen --hide-pointer --cycle-once --slideshow-delay $delay_in_minutes /home/pi/Pictures/$folder"
+  command="$XPREFIX /usr/bin/feh --quiet --preload --fullscreen --hide-pointer --cycle-once --slideshow-delay $delay_in_minutes $pictures_root/$folder"
   logger "Executing this command: $command"
   eval $command
 }
