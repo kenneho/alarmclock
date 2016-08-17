@@ -37,4 +37,20 @@ Create a crontab entry to start the script in the morning:
 
 You might want to reduce the touch sensitivity on the touchscreen, if you find it difficult to start the script by double clicking the icon. 
 
+## Usage
+
+The script can be ran in two "modes": Night time and daytime. For nigth time mode, execute the script like this:
+```
+/bin/bash /home/pi/scripts/alarmclock/alarmclock.sh <awake_time> <sleep_time>
+```
+The first argument set the number of minutes to display the daytime image, before switching to the night time image. After <sleep_time> minutes, the screen goes blank.
+
+The second mode, the daytime mode, is run like this:
+```
+/bin/bash /home/pi/scripts/alarmclock/alarmclock.sh <awake_time> 
+```
+The day time image will be displayed <awake_time> minutes, after which the screen goes blank. 
+
+
+
 
