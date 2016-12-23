@@ -3,6 +3,16 @@ awake_time=$1
 sleep_time=$2
 pictures_root="/home/pi/Pictures"
 
+# Usage: 
+#  * Set night time mode by passing two parameters. The first being the number of minutes to display the first picture, 
+#    and the second being the number of minutes to display the second picture before turning off the screen. 
+#    Example: 
+#        PUSHOVER_APP_TOKEN=secret PUSHOVER_USER_TOKEN=shh /bin/bash /home/pi/scripts/armclock/alarmclock.sh 10 90
+#  * Set morning time mode by passing a singe parameter that denotes the number of minutes to display the picture before turning the
+#    screen off. 
+#    Example: 
+#        PUSHOVER_APP_TOKEN=secret PUSHOVER_USER_TOKEN=shh /bin/bash /home/pi/scripts/armclock/alarmclock.sh 60
+   
 function show {
   folder=$1
   delay_in_seconds=$2
@@ -48,6 +58,10 @@ logger "$date Awake..."
 show "awake" "$awake_time"
 
 if [ "$mode" == "evening" ]; then
+  
+  # Send a notification the the parents mobile phone, using Pushover
+  message="Tuck in the baby"
+  run_command "curl -s --form-string \"token=$PUSHOVER_APP_TOKEN\" --form-string \"user=$PUSHOVER_USER_TOKEN\" --form-string \"message=$message\" https://api.pushover.net/1/messages.json"
   date=`date`
   logger "$date Sleeping..."
   show "sleeping" "$sleep_time"
