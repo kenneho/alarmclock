@@ -8,6 +8,8 @@ pictures_root="/home/pi/Pictures"
 #    and the second being the number of minutes to display the second picture before turning off the screen. 
 #    Example: 
 #        PUSHOVER_APP_TOKEN=secret PUSHOVER_USER_TOKEN=shh /bin/bash /home/pi/scripts/armclock/alarmclock.sh 10 90
+#    In the desktop file, e.g. ~/Desktop/nighttime.desktop, wrap the above command like this: 
+#        Exec=sh -c "PUSHOVER_APP_TOKEN=secret PUSHOVER_USER_TOKEN=shh /bin/bash /home/pi/scripts/armclock/alarmclock.sh 10 90"
 #  * Set morning time mode by passing a singe parameter that denotes the number of minutes to display the picture before turning the
 #    screen off. 
 #    Example: 
