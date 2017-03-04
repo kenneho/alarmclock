@@ -51,6 +51,7 @@ else
   logger "Running in evening mode with awake time $awake_time and sleep time $sleep_time"
 fi
 
+run_command "sudo sh -c 'echo 50 > /sys/class/backlight/rpi_backlight/brightness'"
 run_command "xset s off"
 run_command "xset -dpms"
 run_command "xset s noblank"
