@@ -26,6 +26,20 @@ Terminal=false
 Categories=None;
 ```
 
+### Install dependencies
+
+```
+sudo apt-get install feh
+```
+
+### Upload nighttime and daytime images
+
+Create the folders in which the nighttime and daytime image(s) will be located:
+```
+mkdir ~/Pictures/{sleeping,awake}
+```
+Place one or more images in their respective folders.
+
 ### Crontab
 
 Create a crontab entry to start the script in the morning:
