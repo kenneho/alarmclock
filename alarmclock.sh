@@ -15,6 +15,8 @@ pictures_root="/home/pi/Pictures"
 #    Example: 
 #        PUSHOVER_APP_TOKEN=secret PUSHOVER_USER_TOKEN=shh /bin/bash /home/pi/scripts/armclock/alarmclock.sh 60
    
+brightness=15
+
 function show {
   folder=$1
   delay_in_seconds=$2
@@ -51,7 +53,7 @@ else
   logger "Running in evening mode with awake time $awake_time and sleep time $sleep_time"
 fi
 
-run_command "sudo sh -c 'echo 50 > /sys/class/backlight/rpi_backlight/brightness'"
+run_command "sudo sh -c 'echo $brightness > /sys/class/backlight/rpi_backlight/brightness'"
 run_command "xset s off"
 run_command "xset -dpms"
 run_command "xset s noblank"
@@ -75,6 +77,7 @@ run_command "xset s on"
 run_command "xset +dpms"
 run_command "xset s blank"
 run_command "xset s activate"
+run_command "sudo sh -c 'echo 50 > /sys/class/backlight/rpi_backlight/brightness'"
 
 date=`date`
 logger "$date Done!"
